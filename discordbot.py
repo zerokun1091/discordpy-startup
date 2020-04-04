@@ -8,6 +8,9 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print('ログインしました')
+    activity = discord.Activity(name='discord.py', type=discord.ActivityType.watching)
+    await client.change_presence(activity=activity)
+
 
 @client.event
 async def on_message(message):
