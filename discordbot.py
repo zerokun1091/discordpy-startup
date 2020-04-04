@@ -3,23 +3,21 @@ import os
 import traceback
 
 token = os.environ['DISCORD_BOT_TOKEN']
+client = discord.Client()
 
-
-@bot.event
-async def on_command_error(ctx, error):
-    orig_error = getattr(error, "original", error)
-    error_msg = ''.join(traceback.TracebackException.from_exception(orig_error).format())
-    await ctx.send(error_msg)
-
-@bot.event
+@client.event
 async def on_ready():
-    print ("Starting up")
-activity = discord.Activity(name='python', type=discord.ActivityType.watching)
-await client.change_presence(activity=activity)
+    print('ログインしました')
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+# メッセージ受信時に動作する処理
+@client.event
+async def on_message(message):
+    # メッセージ送信者がBotだった場合は無視する
+    if message.author.bot:
+        return
+    # 「/neko」と発言したら「にゃーん」が返る処理
+    if message.content == '/neko':
+        await message.channel.send('にゃーん')
 
-
-bot.run(token)
+# Botの起動とDiscordサーバーへの接続
+client.run(TOKEN)
