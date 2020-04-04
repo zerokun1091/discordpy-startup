@@ -20,5 +20,7 @@ async def on_message(message):
     if message.content == 'ねこ':
         await message.channel.send('にゃーん')
 
+    if message.content == '.roles':
+        await message.channel.send(message.guild.roles)
 
 client.run(token)
