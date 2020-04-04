@@ -15,10 +15,8 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_ready():
     print ("Starting up")
-    print ("My username is " + bot.user.name + " and i am running with the ID: " + bot.user.id)
-    await bot.change_presence(game=discord.Game(name="Test", type=1))
-    print ("Started")
-
+activity = discord.Activity(name='python', type=discord.ActivityType.watching)
+await client.change_presence(activity=activity)
 
 @bot.command()
 async def ping(ctx):
