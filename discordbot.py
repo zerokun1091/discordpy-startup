@@ -23,4 +23,8 @@ async def on_message(message):
     if message.content == '.roles':
         await message.channel.send(message.guild.roles)
 
+    if message.content == '.embedt':
+        embed = discord.Embed(title="Hi!!",description="How are you?") 
+        await channel.send(embed=embed) 
+
 client.run(token)
