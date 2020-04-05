@@ -10,6 +10,9 @@ async def on_ready():
     print('ログインしました')
     activity = discord.Activity(name='discord.py', type=discord.ActivityType.watching)
     await client.change_presence(activity=activity)
+    channel = client.get_channel(678913915123662907)
+    embed = discord.Embed(title="Botが起動しました")
+    await channel.send(embed=embed) 
 
 
 @client.event
