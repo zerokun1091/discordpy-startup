@@ -25,6 +25,6 @@ async def on_message(message):
 
     if message.content == '.embedt':
         embed = discord.Embed(title="Hi!!",description="How are you?") 
-        await channel.send(embed=embed) 
+        await message.channel.send(embed=embed) 
 
 client.run(token)
