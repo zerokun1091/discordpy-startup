@@ -14,7 +14,7 @@ async def on_ready():
     channel = client.get_channel(678913915123662907)
     embed = discord.Embed(title="Botが起動しました")
     dt_now = datetime.datetime.now()
-    embed.set_footer(dt_now.strftime('%Y年%m月%d日 %H:%M:%S'))
+    embed.set_footer(dt_now)
     await channel.send(embed=embed) 
 
 
