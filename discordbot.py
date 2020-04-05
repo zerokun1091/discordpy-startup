@@ -1,6 +1,7 @@
 import discord
 import os
 import traceback
+import datetime
 
 token = os.environ['DISCORD_BOT_TOKEN']
 client = discord.Client()
@@ -12,6 +13,8 @@ async def on_ready():
     await client.change_presence(activity=activity)
     channel = client.get_channel(678913915123662907)
     embed = discord.Embed(title="Botが起動しました")
+    dt_now = datetime.datetime.now()
+    embed.set_footer(dt_now.strftime('%Y年%m月%d日 %H:%M:%S'))
     await channel.send(embed=embed) 
 
 
