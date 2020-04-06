@@ -36,7 +36,7 @@ async def on_message(message):
 
 @client.event
 async def on_message(message):
-    if message.content.startswith("chcreate"):
+    if message.content.startswith(".chcreate"):
         args = message.content.split(" ")
 
         chname = message.guild.get_channel(args[1])
@@ -45,6 +45,6 @@ async def on_message(message):
             await message.channel.send("コマンドの引数が足りません。")
             return
 
-            await chname.create_text_channel(name=args[2])
+        await chname.create_text_channel(name=args[2])
 
 client.run(token)
