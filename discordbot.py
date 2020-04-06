@@ -33,4 +33,18 @@ async def on_message(message):
         embed = discord.Embed(title="Hi!!",description="How are you?") 
         await message.channel.send(embed=embed) 
 
+
+@client.event
+async def on_message(message):
+    if message.content.startswith("chcreate"):
+        args = message.content.split(" ")
+
+        chname = message.guild.get_channel(args[1])
+
+        if len(args) == 1:
+            await message.channel.send("コマンドの引数が足りません。")
+            return
+
+            await chname.create_text_channel(name=args[2])
+
 client.run(token)
